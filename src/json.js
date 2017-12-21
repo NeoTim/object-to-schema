@@ -1,4 +1,7 @@
 'use strict';
+/**
+ * JS Object to JSON Schema
+ */
 
 const _ = require('lodash');
 
