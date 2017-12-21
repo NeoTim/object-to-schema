@@ -1,4 +1,4 @@
-# leaf-jts
+# object-to-schema
 
 > Convert JS Object to leaf api schema
 
@@ -6,14 +6,14 @@
 ## Installation
 
 ```bash
-$ npm i leaf-jts -S
+$ npm i object-to-schema -S
 ```
 
 ## Usage
 
 
 ```js
-const jts = require('leaf-jts');
+const ots = require('object-to-schema');
 
 const obj = {
   id: 100,
@@ -30,8 +30,8 @@ const obj = {
   ],
 };
 
-const jsonSchema = jts.json(obj);
-const apiSchema = jts.api(obj);
+const jsonSchema = ots.json(obj);
+const apiSchema = ots.api(obj);
 
 console.log(JSON.stringify(jsonSchema, null, 2));
 

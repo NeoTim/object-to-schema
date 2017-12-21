@@ -8,5 +8,5 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* can convert ([0f2e629](https://github.com/forsigner/leaf-jts/commit/0f2e629))
-* to api schema ([4e9c29a](https://github.com/forsigner/leaf-jts/commit/4e9c29a))
+* can convert ([0f2e629](https://github.com/forsigner/object-to-schema/commit/0f2e629))
+* to api schema ([4e9c29a](https://github.com/forsigner/object-to-schema/commit/4e9c29a))

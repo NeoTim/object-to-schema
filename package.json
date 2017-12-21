@@ -1,6 +1,6 @@
 {
-  "name": "leaf-jts",
-  "description": "Leaf for Express",
+  "name": "object-to-schema",
+  "description": "",
   "version": "1.0.0",
   "main": "index.js",
   "author": {
@@ -9,35 +9,25 @@
   },
   "license": "MIT",
   "keywords": [
-    "browser-sync",
-    "express",
-    "connect",
-    "mock",
-    "leaf-jts",
-    "middleware"
+    "object-to-schema",
+    "json-to-schema"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/forsigner/leaf-jts.git"
+    "url": "git+https://github.com/forsigner/object-to-schema.git"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-1": "^6.24.1",
-    "is-type-of": "^1.2.0",
-    "parse-docs": "^0.2.1"
+    "babel-preset-stage-1": "^6.24.1"
   },
   "devDependencies": {
     "eslint": "^4.3.0",
     "eslint-config-egg": "^5.0.0",
     "standard-version": "^4.2.0"
   },
-  "files": [
-    "LICENSE",
-    "index.js",
-    "lib/**/*"
-  ],
+  "files": ["LICENSE", "index.js", "lib/**/*"],
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -46,9 +36,9 @@
     "release": "standard-version"
   },
   "bugs": {
-    "url": "https://github.com/forsigner/leaf-jts/issues"
+    "url": "https://github.com/forsigner/object-to-schema/issues"
   },
-  "homepage": "https://github.com/forsigner/leaf-jts",
+  "homepage": "https://github.com/forsigner/object-to-schema",
   "_npmUser": {
     "name": "forsigner",
     "email": "forsigner@gmail.com"
