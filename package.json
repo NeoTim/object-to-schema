@@ -1,19 +1,57 @@
 {
   "name": "leaf-jts",
+  "description": "Leaf for Express",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": {
+    "name": "forsigner",
+    "email": "forsigner@gmail.com"
   },
+  "main": "index.js",
+  "license": "MIT",
+  "keywords": [
+    "browser-sync",
+    "express",
+    "connect",
+    "mock",
+    "leaf-jts",
+    "middleware"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/forsigner/leaf-jts.git"
   },
-  "author": "forsigner",
-  "license": "ISC",
+  "dependencies": {
+    "is-type-of": "^1.2.0",
+    "parse-docs": "^0.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-config-egg": "^5.0.0",
+    "standard-version": "^4.2.0"
+  },
+  "files": [
+    "LICENSE",
+    "index.js",
+    "lib/**/*"
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "release": "standard-version"
+  },
   "bugs": {
     "url": "https://github.com/forsigner/leaf-jts/issues"
   },
-  "homepage": "https://github.com/forsigner/leaf-jts#readme"
+  "homepage": "https://github.com/forsigner/leaf-jts",
+  "_npmUser": {
+    "name": "forsigner",
+    "email": "forsigner@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "forsigner",
+      "email": "forsigner@gmail.com"
+    }
+  ]
 }
