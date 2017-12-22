@@ -9,9 +9,9 @@ module.exports = jts;
 
 const rules = [
   [ _.isNull, value => ({ type: 'null', value }) ],
-  [ _.isNumber, value => ({ type: 'number', defalut: value }) ],
-  [ _.isBoolean, value => ({ type: 'boolean', defalut: value }) ],
-  [ _.isString, value => ({ type: 'string', defalut: value }) ],
+  [ _.isNumber, value => ({ type: 'number', default: value }) ],
+  [ _.isBoolean, value => ({ type: 'boolean', default: value }) ],
+  [ _.isString, value => ({ type: 'string', default: value }) ],
   [ _.isRegExp, pattern => ({ type: 'string', pattern }) ],
 
   // Empty array -> array of any items
