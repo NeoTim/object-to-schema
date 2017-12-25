@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  info: {
+  basic: {
     title: 'Title for API',
     description: 'Description for API',
     method: 'API method',
@@ -14,16 +14,12 @@ module.exports = {
   },
   responses: [
     {
-      scene: {
-        status: '200',
-        active: true,
-      },
+      description: '成功返回',
+      body: {},
       mock: {
         delay: 100,
         enable: false,
       },
-      description: '成功返回',
-      body: {},
     },
   ],
 };

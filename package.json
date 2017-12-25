@@ -36,6 +36,7 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
+    "test": "npm run compile && node example/index.js",
     "compile": "babel src -d lib",
     "release": "standard-version"
   },
