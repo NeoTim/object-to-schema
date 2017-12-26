@@ -1,14 +1,17 @@
 {
   "name": "object-to-schema",
   "description": "",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "lib/index.js",
   "author": {
     "name": "forsigner",
     "email": "forsigner@gmail.com"
   },
   "license": "MIT",
-  "keywords": ["object-to-schema", "json-to-schema"],
+  "keywords": [
+    "object-to-schema",
+    "json-to-schema"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/forsigner/object-to-schema.git"
@@ -25,7 +28,11 @@
     "eslint-config-egg": "^5.0.0",
     "standard-version": "^4.2.0"
   },
-  "files": ["LICENSE", "index.js", "lib/**/*"],
+  "files": [
+    "LICENSE",
+    "index.js",
+    "lib/**/*"
+  ],
   "engines": {
     "node": ">= 0.8.0"
   },
