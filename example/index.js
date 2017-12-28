@@ -1,22 +1,27 @@
 'use strict';
 
-const jts = require('../lib');
+const ots = require('../lib');
 
 const obj = {
-  id: 100,
-  owner: {
-    show: 'true|Boolean|is show',
-    login: 'japsu',
-  },
+  '// name': 'user name',
   name: 'Tom',
+  times: [ 1, 2, 3 ],
+  members: [],
+  user: {
+    '// age': '年龄',
+    age: 1,
+    '// addr': '地址',
+    addr: 'gz',
+  },
   books: [
     {
-      name: 'Hackers and Painters|string|book name',
+      '// name': '书名',
+      name: 'Hackers and Painters',
       author: 'Paul Graham',
     },
   ],
 };
 
-const schema = jts.json(obj);
+const schema = ots.json(obj);
 
 console.log(JSON.stringify(schema, null, 2));

@@ -4,44 +4,59 @@
  */
 
 const _ = require('lodash');
-module.exports = jts;
-
-// handle this type data: Hackers and Painters|string|book name
-function handleString(value) {
-  const arr = value.split('|');
-  if (arr.length < 2) {
-    return { type: 'string', default: value };
-  }
-
-  return {
-    type: arr[1],
-    default: arr[0],
-    description: arr[2],
-  };
-}
+module.exports = objectToSchema;
 
 const rules = [
-  [ _.isNull, value => ({ type: 'null', value }) ],
-  [ _.isNumber, value => ({ type: 'number', default: value }) ],
-  [ _.isBoolean, value => ({ type: 'boolean', default: value }) ],
-  [ _.isString, value => handleString(value) ],
+  [ _.isNull, value => handleValue('null', value) ],
+  [ _.isNumber, value => handleValue('number', value) ],
+  [ _.isBoolean, value => handleValue('boolean', value) ],
+  [ _.isString, value => handleValue('string', value) ],
   [ _.isRegExp, pattern => ({ type: 'string', pattern }) ],
 
   // Empty array -> array of any items
   [ data => _.isArray(data) && !data.length, () => ({ type: 'array' }) ],
 
-  [ _.isArray, items => ({ type: 'array', items: jts(items[0]) }) ],
-  [
-    _.isPlainObject,
-    object => ({
-      type: 'object',
-      required: _.keys(object),
-      properties: _.mapValues(object, jts),
-    }),
-  ],
+  [ _.isArray, items => ({ type: 'array', items: objectToSchema(items[0]) }) ],
+  [ _.isPlainObject, object => handleOjbect(object) ],
 ];
 
-function jts(data) {
+function handleOjbect(object) {
+  const required = _.keys(object).filter(item => item.indexOf('//') < 0);
+  return {
+    type: 'object',
+    required,
+    properties: handleProps(object),
+  };
+}
+
+function handleProps(object) {
+  const obj = {};
+  _.keys(object).forEach(item => {
+    if (item.indexOf('//') > -1) return;
+    for (const [ isMatch, makeSchema ] of rules) {
+      if (!isMatch(object[item])) {
+        continue;
+      }
+
+      if (_.isPlainObject(object[item])) {
+        obj[item] = makeSchema(object[item]);
+        continue;
+      }
+
+      if (object[`// ${item}`]) {
+        const type = typeOf(object[item]);
+        const o = object[`// ${item}`];
+        obj[item] = makeSchema(`${object[item]}|${type}|${o}`);
+      } else {
+        obj[item] = makeSchema(object[item]);
+      }
+      break;
+    }
+  });
+  return obj;
+}
+
+function objectToSchema(data) {
   for (const [ isMatch, makeSchema ] of rules) {
     if (isMatch(data)) {
       return makeSchema(data);
@@ -49,4 +64,44 @@ function jts(data) {
   }
 
   throw new TypeError(data);
+}
+
+// handle this type data: Hackers and Painters|string|book name
+function handleValue(type, value) {
+  if (!_.isString(value)) {
+    return { type, default: value };
+  }
+  const arr = value.split('|');
+  if (arr.length < 2) {
+    return { type, default: value };
+  }
+  const [ defaultValue, valueType, description ] = arr;
+
+  const maps = {
+    null: () => null,
+    number: Number,
+    boolean: Boolean,
+    string: data => data,
+  };
+
+  return {
+    type: valueType,
+    default: maps[valueType](defaultValue),
+    description,
+  };
+}
+
+function typeOf(data) {
+  const rules = [
+    [ _.isNull, 'null' ],
+    [ _.isNumber, 'number' ],
+    [ _.isBoolean, 'boolean' ],
+    [ _.isString, 'string' ],
+    [ _.isRegExp, 'string' ],
+  ];
+  for (const [ isMatch, value ] of rules) {
+    if (isMatch(data)) {
+      return value;
+    }
+  }
 }
