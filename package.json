@@ -9,8 +9,7 @@
   },
   "license": "MIT",
   "keywords": [
-    "object-to-schema",
-    "json-to-schema"
+    "object-to-schema"
   ],
   "repository": {
     "type": "git",

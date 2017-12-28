@@ -45,8 +45,8 @@ function handleProps(object) {
 
       if (object[`// ${item}`]) {
         const type = typeOf(object[item]);
-        const o = object[`// ${item}`];
-        obj[item] = makeSchema(`${object[item]}|${type}|${o}`);
+        const desc = getDesc(object[`// ${item}`]);
+        obj[item] = makeSchema(`${object[item]}|${type}|${desc}`);
       } else {
         obj[item] = makeSchema(object[item]);
       }
@@ -54,6 +54,14 @@ function handleProps(object) {
     }
   });
   return obj;
+}
+
+function getDesc(comment = []) {
+  if (!_.isArray(comment) || _.isEmpty(comment)) return '';
+  return (comment[1] || '')
+    .toString()
+    .replace(/^\/\//, '')
+    .trim();
 }
 
 function objectToSchema(data) {

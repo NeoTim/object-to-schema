@@ -3,12 +3,12 @@
 const ots = require('../lib');
 
 const obj = {
-  '// name': 'user name',
+  '// name': [ null, [ '// user name' ]],
   name: 'Tom',
   times: [ 1, 2, 3 ],
   members: [],
   user: {
-    '// age': '年龄',
+    '// age': [ null, [ '// 年龄' ]],
     age: 1,
     '// addr': '地址',
     addr: 'gz',
