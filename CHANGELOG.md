@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/forsigner/object-to-schema/compare/v1.4.0...v1.5.0) (2017-12-29)
+
+
+### Features
+
+* update comment format ([09b59a1](https://github.com/forsigner/object-to-schema/commit/09b59a1))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/forsigner/object-to-schema/compare/v1.3.2...v1.4.0) (2017-12-29)
 
