@@ -4,6 +4,7 @@
  */
 
 const _ = require('lodash');
+const separator = '(@#$%)';
 module.exports = objectToSchema;
 
 const rules = [
@@ -46,7 +47,8 @@ function handleProps(object) {
       if (object[`// ${item}`]) {
         const type = typeOf(object[item]);
         const desc = getDesc(object[`// ${item}`]);
-        obj[item] = makeSchema(`${object[item]}|${type}|${desc}`);
+        const value = `${object[item]}${separator}${type}${separator}${desc}`;
+        obj[item] = makeSchema(value);
       } else {
         obj[item] = makeSchema(object[item]);
       }
@@ -58,6 +60,7 @@ function handleProps(object) {
 
 function getDesc(comment = []) {
   if (!_.isArray(comment) || _.isEmpty(comment)) return '';
+
   return (comment[1] || '')
     .toString()
     .replace(/^\/\//, '')
@@ -79,7 +82,7 @@ function handleValue(type, value) {
   if (!_.isString(value)) {
     return { type, default: value };
   }
-  const arr = value.split('|');
+  const arr = value.split(separator);
   if (arr.length < 2) {
     return { type, default: value };
   }

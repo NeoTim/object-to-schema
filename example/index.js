@@ -3,7 +3,7 @@
 const ots = require('../lib');
 
 const obj = {
-  '// name': [ null, [ '// user name' ]],
+  '// name': [ null, [ '// user name|maxLength:10' ]],
   name: 'Tom',
   times: [ 1, 2, 3 ],
   members: [],
