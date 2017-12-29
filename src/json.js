@@ -46,7 +46,7 @@ function handleProps(object) {
 
       if (object[`// ${item}`]) {
         const type = typeOf(object[item]);
-        const desc = getDesc(object[`// ${item}`]);
+        const desc = object[`// ${item}`];
         const value = `${object[item]}${separator}${type}${separator}${desc}`;
         obj[item] = makeSchema(value);
       } else {
@@ -56,15 +56,6 @@ function handleProps(object) {
     }
   });
   return obj;
-}
-
-function getDesc(comment = []) {
-  if (!_.isArray(comment) || _.isEmpty(comment)) return '';
-
-  return (comment[1] || '')
-    .toString()
-    .replace(/^\/\//, '')
-    .trim();
 }
 
 function objectToSchema(data) {
